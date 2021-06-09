@@ -1,0 +1,23 @@
+html, body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.root {
+    width: 600px;
+    height: 300px;
+    position: relative;
+}
+
+.item {
+    position: absolute;
+    bottom: 0;
+    background: #ccc;;
+    width: 1px;
+}
+
+/*# sourceMappingURL=index.76b0bd51.css.map */

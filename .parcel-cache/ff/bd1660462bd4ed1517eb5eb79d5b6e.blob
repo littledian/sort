@@ -1,0 +1,34 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _random = require("./utils/random");
+var _proxy = require("./utils/proxy");
+var _proxyDefault = parcelHelpers.interopDefault(_proxy);
+var _selectSort = require("./sort/SelectSort");
+var _selectSortDefault = parcelHelpers.interopDefault(_selectSort);
+function initElement(array, el) {
+    el.innerHTML = '';
+    const length = array.length;
+    let s = '';
+    for(let i = 0; i < length; i++)s += `<div class="item" style="left: ${i * 100 / length}%; height: ${array[i] * 100 / length}%"></div>`;
+    el.innerHTML = s;
+}
+let array = _random.generateRandomArray(1000);
+array = _proxyDefault.default(array, (oldVal, newVal)=>{
+    // console.log(oldVal);
+    // console.log(newVal);
+    const diffs = [];
+    for(let i = 0; i < oldVal.length; i++)if (oldVal[i] !== newVal[i]) diffs.push({
+        index: i,
+        oldVal: oldVal[i],
+        newVal: newVal[i]
+    });
+    const el = document.getElementById('root');
+    const children = el.children;
+    const length = oldVal.length;
+    for (const diff of diffs){
+        console.log(diff);
+        children[diff.index].style.height = `${diff.newVal} * 100 / ${length}%`;
+    }
+});
+initElement(array, document.getElementById('root'));
+const instance = new _selectSortDefault.default();
+array = instance.sort(array);

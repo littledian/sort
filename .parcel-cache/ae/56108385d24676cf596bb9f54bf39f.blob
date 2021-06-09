@@ -1,0 +1,19 @@
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getRandomNumber", ()=>getRandomNumber
+);
+parcelHelpers.export(exports, "generateRandomArray", ()=>generateRandomArray
+);
+function getRandomNumber(min, max) {
+    return min + Math.floor((max - min) * Math.random());
+}
+function generateRandomArray(length) {
+    const array = new Array(length).fill(0).map((_, index)=>index
+    );
+    const result = [];
+    for(let i = 0; i < length; i++){
+        const index = getRandomNumber(0, length - i);
+        result.push(array.splice(index, 1)[0]);
+    }
+    return result;
+}
