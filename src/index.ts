@@ -17,8 +17,6 @@ function initElement(array: number[], el: HTMLElement) {
 
 let array = generateRandomArray(1000);
 array = proxy(array, (oldVal, newVal) => {
-  // console.log(oldVal);
-  // console.log(newVal);
   const diffs = [];
   for (let i = 0; i < oldVal.length; i++) {
     if (oldVal[i] !== newVal[i]) {
